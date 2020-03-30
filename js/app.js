@@ -102,13 +102,29 @@ function addSection() {
 }
 
 
+function buildNavbar() {
+  sectionList = main.querySelectorAll("section");
+  let fragment = document.createDocumentFragment();
+  console.log("build nav bar", sectionList.length);
+  for (let i = 0; i < sectionList.length; ++i) {
+    let listElement = document.createElement("li");
+    listElement.textContent = sectionList[i].getAttribute("data-nav");
+    listElement.classList.add("navbar__elem");
+    listElement.setAttribute("section-id", sectionList[i].id);
+    fragment.appendChild(listElement);
+  }
+
+  navbar.appendChild(fragment);
+}
+
 /**
  * End Helper Functions
  * Begin Main Functions
  *
 */
 
-navbar.addEventListener("click", scroll);
+
+
 
 // section.classList.add("your-active-class");
 
@@ -119,6 +135,7 @@ navbar.addEventListener("click", scroll);
 
 
 // Scroll to anchor ID using scrollTO event
+navbar.addEventListener("click", scroll);
 
 
 /**
@@ -128,6 +145,8 @@ navbar.addEventListener("click", scroll);
 */
 
 // Build menu
+buildNavbar()
+
 
 // Scroll to section on link click
 
