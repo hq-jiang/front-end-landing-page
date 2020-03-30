@@ -37,12 +37,7 @@ function generateRandomTitle() {
   return titleList[randNum];
 }
 
-function scroll() {
-  const section = document.querySelector("#section2");
-  section.scrollIntoView({behavior: "smooth"});
-}
-
-function scrollSmooth(event) {
+function scroll(event) {
   sectionId = event.target.getAttribute("section-id");
   console.log(sectionId);
   section = document.querySelector(`#${sectionId}`);
@@ -118,7 +113,7 @@ function addSection() {
 let body = document.querySelector("body");
 // body.addEventListener("click", addSection);
 
-navbar.addEventListener("click", scrollSmooth);
+navbar.addEventListener("click", scroll);
 
 // build the nav
 
