@@ -16,9 +16,9 @@
     <nav class="navbar__menu">
       <!-- Navigation starts as empty UL that will be populated with JS -->
       <ul id="navbar__list">
-        <li class="navbar__elem"> Getting Started </li>
-        <li class="navbar__elem"> Donate Money </li>
-        <li class="navbar__elem"> About </li>
+        <li class="navbar__elem" section-id="section1"> Getting Started </li>
+        <li class="navbar__elem" section-id="section2"> Donate Money </li>
+        <li class="navbar__elem" section-id="section3"> About </li>
       </ul>
     </nav>
   </header>
@@ -26,6 +26,7 @@
     <header class="main__hero">
       <h1>Landing Page </h1>
     </header>
+    <button onclick="addSection()"> Create new sections </button>
     <!-- Each Section has an ID (used for the anchor) and
     a data attribute that will populate the li node.
     Adding more sections will automatically populate nav.

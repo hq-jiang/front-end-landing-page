@@ -18,6 +18,9 @@ body {
     color: #fff;
 }
 
+button {
+  margin-left: 8vh;
+}
 
 /* Typeography General*/
 h1 {
@@ -78,6 +81,11 @@ section {
   font-weight: bold;
   margin: 10px;
 }
+
+.navbar__elem:hover {
+  color: lightgray;
+}
+
 
 .navbar__menu ul {
     padding-left: 0;

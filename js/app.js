@@ -17,6 +17,8 @@
  * Define Global Variables
  *
 */
+const main = document.querySelector("main");
+const navbar = document.querySelector("#navbar__list");
 
 
 /**
@@ -28,11 +30,37 @@ function print() {
   console.log("Hello World");
 }
 
-function createSection(fragment) {
+function generateRandomTitle() {
+  titleList = ["Our Mission", "Contacts", "History", "Support Us", "Career",
+    "Press", "Social Media", "Software", "We're Hiring", "News"];
+  randNum = Math.floor(Math.random() * 10);
+  return titleList[randNum];
+}
+
+function scroll() {
+  const section = document.querySelector("#section2");
+  section.scrollIntoView({behavior: "smooth"});
+}
+
+function scrollSmooth(event) {
+  sectionId = event.target.getAttribute("section-id");
+  console.log(sectionId);
+  section = document.querySelector(`#${sectionId}`);
+
+  section.scrollIntoView({behavior: "smooth"});
+}
+
+function createSection(fragment, title) {
   // Create section
+
+  sectionList = main.querySelectorAll("section");
+  targetId = sectionList.length + 1;
+
   let section = document.createElement("section");
   // TODO: Add section ids and data-nav property
   section.classList.add("your-active-class");
+  section.setAttribute("data-nav", title);
+  section.id = "section" + targetId;
 
   // Create div
   let div = document.createElement("div");
@@ -40,7 +68,7 @@ function createSection(fragment) {
 
   // Create h2
   let h2 = document.createElement("h2");
-  h2.textContent = "More";
+  h2.textContent = title;
 
   // Create p
   let p = document.createElement("p");
@@ -63,25 +91,24 @@ function createSection(fragment) {
   // </section>
 }
 
-function AddElementToNavbar() {
-  const navbar = document.querySelector("#navbar__list");
-  let listElement = document.createElement("li")
-  listElement.textContent = "More";
-  listElement.classList.add("navbar__elem");
-  navbar.appendChild(listElement);
-  console.log("Adding to Navbar");
-
-  const main = document.querySelector("main");
-
+function addSection() {
   let fragment = document.createDocumentFragment();
-  section = createSection(fragment);
-  main.appendChild(section);
+
+  // Create section
+  title = generateRandomTitle();
+  sectionFragment = createSection(fragment, title);
+  main.appendChild(sectionFragment);
+  // main.lastChild.scrollIntoView({behavior: "smooth"});
+
+  // Create associated navbar
+  let listElement = document.createElement("li")
+  listElement.textContent = title;
+  listElement.classList.add("navbar__elem");
+  listElement.setAttribute("section-id", main.lastChild.id);
+  navbar.appendChild(listElement);
 }
 
-function scroll() {
-  const section = document.querySelector("#section2");
-  section.scrollIntoView({behavior: "smooth"});
-}
+
 /**
  * End Helper Functions
  * Begin Main Functions
@@ -89,10 +116,9 @@ function scroll() {
 */
 
 let body = document.querySelector("body");
-body.addEventListener("click", AddElementToNavbar);
+// body.addEventListener("click", addSection);
 
-
-body.addEventListener("click", scroll);
+navbar.addEventListener("click", scrollSmooth);
 
 // build the nav
 
