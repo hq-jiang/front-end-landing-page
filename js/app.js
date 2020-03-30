@@ -52,8 +52,6 @@ function createSection(fragment, title) {
   targetId = sectionList.length + 1;
 
   let section = document.createElement("section");
-  // TODO: Add section ids and data-nav property
-  section.classList.add("your-active-class");
   section.setAttribute("data-nav", title);
   section.id = "section" + targetId;
 
@@ -97,7 +95,7 @@ function addSection() {
 
   // Create associated navbar
   let listElement = document.createElement("li")
-  listElement.textContent = title;
+  listElement.textContent = main.lastChild.getAttribute("data-nav");
   listElement.classList.add("navbar__elem");
   listElement.setAttribute("section-id", main.lastChild.id);
   navbar.appendChild(listElement);
@@ -110,10 +108,9 @@ function addSection() {
  *
 */
 
-let body = document.querySelector("body");
-// body.addEventListener("click", addSection);
-
 navbar.addEventListener("click", scroll);
+
+// section.classList.add("your-active-class");
 
 // build the nav
 
