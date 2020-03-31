@@ -72,8 +72,8 @@ function addSection() {
   let fragment = document.createDocumentFragment();
 
   // Create section
-  title = generateRandomTitle();
-  sectionFragment = createSection(fragment, title);
+  const title = generateRandomTitle();
+  const sectionFragment = createSection(fragment, title);
   main.appendChild(sectionFragment);
 
   // Create associated navbar
@@ -86,7 +86,7 @@ function addSection() {
 
 
 function buildNavbar() {
-  sectionList = main.querySelectorAll("section");
+  const sectionList = main.querySelectorAll("section");
   let fragment = document.createDocumentFragment();
   for (let i = 0; i < sectionList.length; ++i) {
     let listElement = document.createElement("li");
@@ -100,7 +100,7 @@ function buildNavbar() {
 }
 
 function setActiveSection() {
-  sectionList = main.querySelectorAll("section");
+  const sectionList = main.querySelectorAll("section");
   let minDistance = Number.MAX_VALUE;
   let closestSectionId = 0;
   // Find section with minimum distance to top of window
